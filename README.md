@@ -1,8 +1,8 @@
 # ZPJSONKit
 iOS 数据解析库，并可去掉null数据和制表符格式的非标准格式json数据
 
-1，解析前除掉json中的制表符（制表符使用NSLOG无法打印出，使用po命令可打印出）
-     NSString *dataString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+>1，解析前除掉json中的制表符（制表符使用NSLOG无法打印出，使用po命令可打印出）
+     NSString *dataString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //json数据当中没有 \n \r \t 等制表符，当后台给出有问题时，我们需要对json数据过滤
     dataString = [dataString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
     dataString = [dataString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
@@ -13,7 +13,7 @@ iOS 数据解析库，并可去掉null数据和制表符格式的非标准格式
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:utf8Data options:NSJSONReadingMutableContainers error:&error];
     
     
-    2，去掉数据中Value为null的数据，防止崩溃（参考AFNetWorking）
+    >2，去掉数据中Value为null的数据，防止崩溃（参考AFNetWorking）
     static id CSIIJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingOptions readingOptions) {
     if ([JSONObject isKindOfClass:[NSArray class]]) {
         NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:[(NSArray *)JSONObject count]];
